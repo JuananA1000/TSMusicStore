@@ -12,7 +12,7 @@ interface Instrumento {
   nombre: string;
   marca: string;
   precio: number;
-  cantidad: number;
+  stock: number;
   categoria: Categoria;
   img: string;
 }
@@ -23,7 +23,7 @@ export const instrumentosData: Instrumento[] = [
     nombre: 'Stratocaster',
     marca: 'Fender',
     precio: 899.0, // Fender Player Stratocaster aprox
-    cantidad: 5,
+    stock: 5,
     categoria: 'cuerda',
     img: fenderStratocaster,
   },
@@ -32,7 +32,7 @@ export const instrumentosData: Instrumento[] = [
     nombre: 'Les Paul',
     marca: 'Gibson',
     precio: 2499.0, // Gibson Les Paul Standard aprox
-    cantidad: 3,
+    stock: 3,
     categoria: 'cuerda',
     img: gibsonLesPaul,
   },
@@ -41,7 +41,7 @@ export const instrumentosData: Instrumento[] = [
     nombre: 'SQ2 Set Beech American Walnut',
     marca: 'Sonor',
     precio: 5200.0, // configuración SQ2 suele variar bastante
-    cantidad: 2,
+    stock: 2,
     categoria: 'percusion',
     img: sonorSQ2,
   },
@@ -50,7 +50,7 @@ export const instrumentosData: Instrumento[] = [
     nombre: 'PSR-E373',
     marca: 'Yamaha',
     precio: 199.0, // precio típico Thomann
-    cantidad: 10,
+    stock: 10,
     categoria: 'teclados',
     img: yamahaPSRE373,
   },
@@ -59,7 +59,7 @@ export const instrumentosData: Instrumento[] = [
     nombre: 'Trumpet YTR-2330',
     marca: 'Yamaha',
     precio: 429.0, // rango habitual
-    cantidad: 4,
+    stock: 4,
     categoria: 'viento',
     img: yamahaYTR2330,
   },
@@ -68,7 +68,7 @@ export const instrumentosData: Instrumento[] = [
     nombre: 'USA Custom 18 WMP',
     marca: 'Gretsch Drums',
     precio: 4700.0, // depende mucho del set/configuración
-    cantidad: 2,
+    stock: 2,
     categoria: 'percusion',
     img: gretschUSA18WMP,
   },

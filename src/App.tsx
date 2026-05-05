@@ -18,7 +18,7 @@ function App() {
     setArticulosEnCarrito((prev) => prev + 1);
 
     setInstrumentos((prev) =>
-      prev.map((instr) => (instr.id === id && instr.cantidad > 0 ? { ...instr, cantidad: instr.cantidad - 1 } : instr)),
+      prev.map((instr) => (instr.id === id && instr.stock > 0 ? { ...instr, stock: instr.stock - 1 } : instr)),
     );
 
     console.log(`Añadir artículo ${id}`);
@@ -49,7 +49,7 @@ function App() {
 
               <div>
                 <h3> {instrumento.precio}€</h3>
-                <button onClick={() => addArticulo(instrumento.id)} disabled={instrumento.cantidad === 0}>
+                <button onClick={() => addArticulo(instrumento.id)} disabled={instrumento.stock === 0}>
                   <ShoppingCartOutlinedIcon />
                 </button>
               </div>
