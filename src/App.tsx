@@ -29,7 +29,7 @@ function App() {
 
         <div className='instr-list'>
           <div className='shopping-cart'>
-            <BurbujaCantidad cantidad={cantidad} />
+            {cantidad > 0 && <BurbujaCantidad cantidad={cantidad} />}
             <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} />
           </div>
 
