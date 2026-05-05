@@ -26,6 +26,17 @@
   }
 }
 
+.shopping-cart {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 12px;
+}
+
+.shopping-cart svg {
+  grid-column: 3;
+  justify-self: end;
+}
+
 .instr-item {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

@@ -2,6 +2,7 @@ import typescriptLogo from './assets/typescript.svg';
 
 import { instrumentosData } from './data/instrumentosData';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 
 import './App.css';
 
@@ -15,6 +16,10 @@ function App() {
         </div>
 
         <div className='instr-list'>
+          <div className='shopping-cart'>
+            <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} />
+          </div>
+
           {instrumentosData.map((instrumento) => (
             <div key={instrumento.id} className='instr-item'>
               <img src={instrumento.img} alt={instrumento.nombre} width={140} />
