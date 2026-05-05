@@ -1,5 +1,5 @@
 import './BurbujaCantidad.css';
 
-export const BurbujaCantidad = () => {
-  return <div className='burbuja-cantidad'>9</div>;
+export const BurbujaCantidad = ({ cantidad }: { cantidad: number }) => {
+  return <div className='burbuja-cantidad'>{cantidad}</div>;
 };

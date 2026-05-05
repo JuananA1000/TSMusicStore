@@ -1,14 +1,24 @@
+import { useState } from 'react';
+
 import typescriptLogo from './assets/typescript.svg';
 
 import { instrumentosData } from './data/instrumentosData';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 
-import {BurbujaCantidad} from './components/BurbujaCantidad';
+import { BurbujaCantidad } from './components/BurbujaCantidad';
 
 import './App.css';
 
 function App() {
+  const [cantidad, setCantidad] = useState(0);
+
+  const addArticulo = () => {
+    setCantidad((prev) => prev + 1);
+
+    console.log(`Añadir artículo `);
+  };
+
   return (
     <>
       <section id='center'>
@@ -19,7 +29,7 @@ function App() {
 
         <div className='instr-list'>
           <div className='shopping-cart'>
-            <BurbujaCantidad />
+            <BurbujaCantidad cantidad={cantidad} />
             <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} />
           </div>
 
@@ -35,7 +45,7 @@ function App() {
               <div>
                 <h3> {instrumento.precio}€</h3>
                 <button>
-                  <ShoppingCartOutlinedIcon />
+                  <ShoppingCartOutlinedIcon onClick={() => addArticulo()} />
                 </button>
               </div>
             </div>
