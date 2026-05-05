@@ -11,12 +11,17 @@ import { BurbujaCantidad } from './components/BurbujaCantidad';
 import './App.css';
 
 function App() {
-  const [cantidad, setCantidad] = useState(0);
+  const [articulosEnCarrito, setArticulosEnCarrito] = useState(0);
+  const [instrumentos, setInstrumentos] = useState(instrumentosData);
 
-  const addArticulo = () => {
-    setCantidad((prev) => prev + 1);
+  const addArticulo = (id: string) => {
+    setArticulosEnCarrito((prev) => prev + 1);
 
-    console.log(`Añadir artículo `);
+    setInstrumentos((prev) =>
+      prev.map((instr) => (instr.id === id && instr.cantidad > 0 ? { ...instr, cantidad: instr.cantidad - 1 } : instr)),
+    );
+
+    console.log(`Añadir artículo ${id}`);
   };
 
   return (
@@ -29,11 +34,11 @@ function App() {
 
         <div className='instr-list'>
           <div className='shopping-cart'>
-            {cantidad > 0 && <BurbujaCantidad cantidad={cantidad} />}
+            {articulosEnCarrito > 0 && <BurbujaCantidad cantidad={articulosEnCarrito} />}
             <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} />
           </div>
 
-          {instrumentosData.map((instrumento) => (
+          {instrumentos.map((instrumento) => (
             <div key={instrumento.id} className='instr-item'>
               <img src={instrumento.img} alt={instrumento.nombre} width={140} />
 
@@ -44,8 +49,8 @@ function App() {
 
               <div>
                 <h3> {instrumento.precio}€</h3>
-                <button>
-                  <ShoppingCartOutlinedIcon onClick={() => addArticulo()} />
+                <button onClick={() => addArticulo(instrumento.id)} disabled={instrumento.cantidad === 0}>
+                  <ShoppingCartOutlinedIcon />
                 </button>
               </div>
             </div>
