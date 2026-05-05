@@ -1,0 +1,17 @@
+.burbuja-cantidad {
+  background-color: #ff6f00;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  right: 80px;
+}

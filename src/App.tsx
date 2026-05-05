@@ -4,6 +4,8 @@ import { instrumentosData } from './data/instrumentosData';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 
+import {BurbujaCantidad} from './components/BurbujaCantidad';
+
 import './App.css';
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
 
         <div className='instr-list'>
           <div className='shopping-cart'>
+            <BurbujaCantidad />
             <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} />
           </div>
 
