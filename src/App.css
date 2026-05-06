@@ -27,14 +27,17 @@
 }
 
 .shopping-cart {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
   padding: 12px;
+  width: 100%;
+  margin-left: auto;
 }
 
 .shopping-cart svg {
-  grid-column: 3;
-  justify-self: end;
+  font-size: 40px;
 }
 
 .instr-item {

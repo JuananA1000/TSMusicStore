@@ -13,5 +13,7 @@
   justify-content: center;
 
   position: absolute;
-  right: 80px;
+  top: 4px;
+  right: 4px;
+  box-shadow: 0 0 0 2px white;
 }
