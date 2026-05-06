@@ -7,6 +7,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 
 import { BurbujaCantidad } from './components/BurbujaCantidad';
+import { Agotado } from './components/Agotado';
 
 import './App.css';
 
@@ -53,6 +54,7 @@ function App() {
                   <ShoppingCartOutlinedIcon />
                 </button>
               </div>
+              {instrumento.stock === 0 && <Agotado />}
             </div>
           ))}
         </div>
