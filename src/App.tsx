@@ -8,12 +8,14 @@ import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlin
 
 import { BurbujaCantidad } from './components/BurbujaCantidad';
 import { Agotado } from './components/Agotado';
+import { Carrito } from './components/Carrito';
 
 import './App.css';
 
 function App() {
   const [articulosEnCarrito, setArticulosEnCarrito] = useState(0);
   const [instrumentos, setInstrumentos] = useState(instrumentosData);
+  const [verCarrito, setVerCarrito] = useState(false);
 
   const addArticulo = (id: string) => {
     setArticulosEnCarrito((prev) => prev + 1);
@@ -23,6 +25,12 @@ function App() {
     );
 
     console.log(`Añadir artículo ${id}`);
+  };
+
+  const toggleVerCarrito = () => {
+    setVerCarrito((prev) => !prev);
+
+    console.log(`Tienes ${articulosEnCarrito} artículos en el carrito`);
   };
 
   return (
@@ -36,7 +44,8 @@ function App() {
         <div className='instr-list'>
           <div className='shopping-cart'>
             {articulosEnCarrito > 0 && <BurbujaCantidad cantidad={articulosEnCarrito} />}
-            <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} />
+            <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} onClick={toggleVerCarrito} />
+            {verCarrito && <Carrito articulos={instrumentos.filter((i) => i.stock === 0)} />}
           </div>
 
           {instrumentos.map((instrumento) => (
