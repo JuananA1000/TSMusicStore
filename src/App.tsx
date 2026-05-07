@@ -44,15 +44,7 @@ function App() {
       setInstrumentos((prev) =>
         prev.map((instr) => (instr.id === id && instr.stock > 0 ? { ...instr, stock: instr.stock - 1 } : instr)),
       );
-
-      console.log(`Añadir artículo ${id}`);
     }
-  };
-
-  const toggleVerCarrito = () => {
-    setVerCarrito((prev) => !prev);
-
-    console.log(`Tienes ${totalArticulosCarrito} artículos en el carrito`);
   };
 
   return (
@@ -66,7 +58,7 @@ function App() {
         <div className='instr-list'>
           <div className='shopping-cart'>
             {totalArticulosCarrito > 0 && <BurbujaCantidad cantidad={totalArticulosCarrito} />}
-            <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} onClick={toggleVerCarrito} />
+            <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} onClick={() => setVerCarrito((prev) => !prev)} />
             {verCarrito && <Carrito articulos={articulosEnCarrito} />}
           </div>
 
