@@ -45,7 +45,7 @@ function App() {
           <div className='shopping-cart'>
             {articulosEnCarrito > 0 && <BurbujaCantidad cantidad={articulosEnCarrito} />}
             <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} onClick={toggleVerCarrito} />
-            {verCarrito && <Carrito articulos={instrumentos.filter((i) => i.stock === 0)} />}
+             <Carrito articulos={instrumentos} />
           </div>
 
           {instrumentos.map((instrumento) => (

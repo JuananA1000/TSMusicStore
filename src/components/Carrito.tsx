@@ -1,3 +1,5 @@
+import './Carrito.css';
+
 type Articulo = {
   id: number;
   img: string;
@@ -12,10 +14,10 @@ type CarritoProps = {
 
 export const Carrito = ({ articulos }: CarritoProps) => {
   return (
-    <div>
-      {/* <h2>Carrito</h2> */}
+    <div className='carrito-content'>
+      <h2>Carrito</h2>
       {articulos.map((item) => (
-        <div key={item.id}>
+        <div key={item.id} className='carrito-item'>
           <img src={item.img} alt={item.nombre} width={100} />
           {item.nombre} - {item.precio}€
         </div>
