@@ -5,24 +5,14 @@ import sonorSQ2 from '../assets/instruments/sonorSQ2.jpg';
 import yamahaPSRE373 from '../assets/instruments/yamahaPSRE373.jpg';
 import yamahaYTR2330 from '../assets/instruments/yamahaYTR2330.jpg';
 
-type Categoria = 'cuerda' | 'percusion' | 'teclados' | 'viento';
-
-interface Instrumento {
-  id: string;
-  nombre: string;
-  marca: string;
-  precio: number;
-  stock: number;
-  categoria: Categoria;
-  img: string;
-}
+import type { Instrumento } from '../types/types';
 
 export const instrumentosData: Instrumento[] = [
   {
     id: '1',
     nombre: 'Stratocaster',
     marca: 'Fender',
-    precio: 899.0, // Fender Player Stratocaster aprox
+    precio: 899.0,
     stock: 5,
     categoria: 'cuerda',
     img: fenderStratocaster,
@@ -31,7 +21,7 @@ export const instrumentosData: Instrumento[] = [
     id: '2',
     nombre: 'Les Paul',
     marca: 'Gibson',
-    precio: 2499.0, // Gibson Les Paul Standard aprox
+    precio: 2499.0,
     stock: 3,
     categoria: 'cuerda',
     img: gibsonLesPaul,
@@ -40,7 +30,7 @@ export const instrumentosData: Instrumento[] = [
     id: '3',
     nombre: 'SQ2 Set Beech American Walnut',
     marca: 'Sonor',
-    precio: 5200.0, // configuración SQ2 suele variar bastante
+    precio: 5200.0,
     stock: 2,
     categoria: 'percusion',
     img: sonorSQ2,
@@ -49,7 +39,7 @@ export const instrumentosData: Instrumento[] = [
     id: '4',
     nombre: 'PSR-E373',
     marca: 'Yamaha',
-    precio: 199.0, // precio típico Thomann
+    precio: 199.0,
     stock: 10,
     categoria: 'teclados',
     img: yamahaPSRE373,
@@ -58,7 +48,7 @@ export const instrumentosData: Instrumento[] = [
     id: '5',
     nombre: 'Trumpet YTR-2330',
     marca: 'Yamaha',
-    precio: 429.0, // rango habitual
+    precio: 429.0,
     stock: 4,
     categoria: 'viento',
     img: yamahaYTR2330,
@@ -67,7 +57,7 @@ export const instrumentosData: Instrumento[] = [
     id: '6',
     nombre: 'USA Custom 18 WMP',
     marca: 'Gretsch Drums',
-    precio: 4700.0, // depende mucho del set/configuración
+    precio: 4700.0,
     stock: 2,
     categoria: 'percusion',
     img: gretschUSA18WMP,

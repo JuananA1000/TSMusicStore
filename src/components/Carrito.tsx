@@ -1,16 +1,6 @@
 import './Carrito.css';
 
-type Articulo = {
-  id: number;
-  img: string;
-  nombre: string;
-  precio: number;
-  cantidad: number;
-};
-
-type CarritoProps = {
-  articulos: Articulo[];
-};
+import type { ArticuloCarrito } from '../types/types';
 
 export const Carrito = ({ articulos }: CarritoProps) => {
   const precioTotal = articulos.reduce((sum, item) => sum + item.precio * item.cantidad, 0);

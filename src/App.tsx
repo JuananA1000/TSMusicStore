@@ -3,6 +3,7 @@ import { useState } from 'react';
 import typescriptLogo from './assets/typescript.svg';
 
 import { instrumentosData } from './data/instrumentosData';
+
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 
@@ -10,15 +11,9 @@ import { BurbujaCantidad } from './components/BurbujaCantidad';
 import { Agotado } from './components/Agotado';
 import { Carrito } from './components/Carrito';
 
-import './App.css';
+import type { ArticuloCarrito } from './types/types';
 
-type ArticuloCarrito = {
-  id: string;
-  img: string;
-  nombre: string;
-  precio: number;
-  cantidad: number;
-};
+import './App.css';
 
 function App() {
   const [articulosEnCarrito, setArticulosEnCarrito] = useState<ArticuloCarrito[]>([]);
