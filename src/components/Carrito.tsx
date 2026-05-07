@@ -13,9 +13,10 @@ type CarritoProps = {
 };
 
 export const Carrito = ({ articulos }: CarritoProps) => {
+  const precioTotal = articulos.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
+
   return (
     <div className='carrito-content'>
-      <h2>Carrito</h2>
       {articulos.map((item) => (
         <div key={item.id} className='carrito-item'>
           {item.cantidad > 1 && <span className='carrito-item-cantidad'>x{item.cantidad}</span>}
@@ -26,6 +27,7 @@ export const Carrito = ({ articulos }: CarritoProps) => {
           </div>
         </div>
       ))}
+      Total: {precioTotal}€
     </div>
   );
 };
