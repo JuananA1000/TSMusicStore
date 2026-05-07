@@ -17,3 +17,9 @@
   padding: 5px;
   border-radius: 5px;
 }
+
+.carrito-item-cantidad {
+  font-weight: bold;
+  color: #555;
+  margin-right: 5px;
+}

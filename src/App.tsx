@@ -12,16 +12,34 @@ import { Carrito } from './components/Carrito';
 
 import './App.css';
 
+type ArticuloCarrito = {
+  id: string;
+  img: string;
+  nombre: string;
+  precio: number;
+  cantidad: number;
+};
+
 function App() {
-  const [articulosEnCarrito, setArticulosEnCarrito] = useState<any[]>([]);
+  const [articulosEnCarrito, setArticulosEnCarrito] = useState<ArticuloCarrito[]>([]);
   const [instrumentos, setInstrumentos] = useState(instrumentosData);
   const [verCarrito, setVerCarrito] = useState(false);
+
+  const totalArticulosCarrito = articulosEnCarrito.reduce((sum, item) => sum + item.cantidad, 0);
 
   const addArticulo = (id: string) => {
     const instrumentoEncontrado = instrumentos.find((instr) => instr.id === id);
 
     if (instrumentoEncontrado && instrumentoEncontrado.stock > 0) {
-      setArticulosEnCarrito((prev) => [...prev, instrumentoEncontrado]);
+      setArticulosEnCarrito((prev) => {
+        const existeEnCarrito = prev.find((item) => item.id === id);
+
+        if (existeEnCarrito) {
+          return prev.map((item) => (item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item));
+        }
+
+        return [...prev, { ...instrumentoEncontrado, cantidad: 1 }];
+      });
 
       setInstrumentos((prev) =>
         prev.map((instr) => (instr.id === id && instr.stock > 0 ? { ...instr, stock: instr.stock - 1 } : instr)),
@@ -34,7 +52,7 @@ function App() {
   const toggleVerCarrito = () => {
     setVerCarrito((prev) => !prev);
 
-    console.log(`Tienes ${articulosEnCarrito.length} artículos en el carrito`);
+    console.log(`Tienes ${totalArticulosCarrito} artículos en el carrito`);
   };
 
   return (
@@ -47,7 +65,7 @@ function App() {
 
         <div className='instr-list'>
           <div className='shopping-cart'>
-            {articulosEnCarrito.length > 0 && <BurbujaCantidad cantidad={articulosEnCarrito.length} />}
+            {totalArticulosCarrito > 0 && <BurbujaCantidad cantidad={totalArticulosCarrito} />}
             <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} onClick={toggleVerCarrito} />
             {verCarrito && <Carrito articulos={articulosEnCarrito} />}
           </div>

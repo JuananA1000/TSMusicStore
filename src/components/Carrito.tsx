@@ -18,8 +18,12 @@ export const Carrito = ({ articulos }: CarritoProps) => {
       <h2>Carrito</h2>
       {articulos.map((item) => (
         <div key={item.id} className='carrito-item'>
+          {item.cantidad > 1 && <span className='carrito-item-cantidad'>x{item.cantidad}</span>}
           <img src={item.img} alt={item.nombre} width={100} />
-          {item.nombre} - {item.precio}€
+          <div className='carrito-item-info'>
+            <span>{item.nombre}</span>
+            <span>{item.precio}€</span>
+          </div>
         </div>
       ))}
     </div>
