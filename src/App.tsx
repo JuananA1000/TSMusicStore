@@ -13,24 +13,28 @@ import { Carrito } from './components/Carrito';
 import './App.css';
 
 function App() {
-  const [articulosEnCarrito, setArticulosEnCarrito] = useState(0);
+  const [articulosEnCarrito, setArticulosEnCarrito] = useState<any[]>([]);
   const [instrumentos, setInstrumentos] = useState(instrumentosData);
   const [verCarrito, setVerCarrito] = useState(false);
 
   const addArticulo = (id: string) => {
-    setArticulosEnCarrito((prev) => prev + 1);
+    const instrumentoEncontrado = instrumentos.find((instr) => instr.id === id);
 
-    setInstrumentos((prev) =>
-      prev.map((instr) => (instr.id === id && instr.stock > 0 ? { ...instr, stock: instr.stock - 1 } : instr)),
-    );
+    if (instrumentoEncontrado && instrumentoEncontrado.stock > 0) {
+      setArticulosEnCarrito((prev) => [...prev, instrumentoEncontrado]);
 
-    console.log(`Añadir artículo ${id}`);
+      setInstrumentos((prev) =>
+        prev.map((instr) => (instr.id === id && instr.stock > 0 ? { ...instr, stock: instr.stock - 1 } : instr)),
+      );
+
+      console.log(`Añadir artículo ${id}`);
+    }
   };
 
   const toggleVerCarrito = () => {
     setVerCarrito((prev) => !prev);
 
-    console.log(`Tienes ${articulosEnCarrito} artículos en el carrito`);
+    console.log(`Tienes ${articulosEnCarrito.length} artículos en el carrito`);
   };
 
   return (
@@ -43,9 +47,9 @@ function App() {
 
         <div className='instr-list'>
           <div className='shopping-cart'>
-            {articulosEnCarrito > 0 && <BurbujaCantidad cantidad={articulosEnCarrito} />}
+            {articulosEnCarrito.length > 0 && <BurbujaCantidad cantidad={articulosEnCarrito.length} />}
             <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} onClick={toggleVerCarrito} />
-             <Carrito articulos={instrumentos} />
+            {verCarrito && <Carrito articulos={articulosEnCarrito} />}
           </div>
 
           {instrumentos.map((instrumento) => (
